@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<mapper namespace="website.adagoto.orm.demo.dao.UserDao">
+    <insert id="addUser" parameterType="website.adagoto.orm.demo.pojo.User" resultType="java.lang.Integer">
+        insert into USER(ID, NAME , PASSWORD) values(#{user.id},#{user.name}, #{user.password})
+    </insert>
+    <update id="updateUser" parameterType="website.adagoto.orm.demo.pojo.User" resultType="java.lang.Integer">
+        update USER set NAME = #{user.name} , PASSWORD = #{user.password} where ID = #{user.id}
+    </update>
+
+    <delete id="deleteById" parameterType="java.lang.String" resultType="java.lang.Integer">
+        delete from USER where ID = #{id}
+    </delete>
+
+    <select id="queryById" parameterType="website.adagoto.orm.demo.pojo.User"
+            resultType="website.adagoto.orm.demo.pojo.User">
+        select * from USER
+        where id = #{id}
+    </select>
+
+    <select id="queryListByName" parameterType="website.adagoto.orm.demo.pojo.User"
+            resultType="website.adagoto.orm.demo.pojo.User">
+        select * from USER
+        where name = #{name}
+    </select>
+</mapper>
